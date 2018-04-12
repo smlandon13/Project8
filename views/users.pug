@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title Users
+    body
+
+        table User List
+            tr
+                th User Id
+                th Name
+                th Email
+                th Age
+            each user in users
+                 tr
+                     td #{user.userId}
+                     td #{user.name}
+                     td #{user.email}
+                     td #{user.age}
+                     td
+                        a(href=`/edit/` + user.id) edit
+                     td
+                        a(href='/delete/' + user.id) delete
+
+        form(action='/', method='get')
+            button Add New User
+//  input(type='submit', value='Delete', onClick='deleteThis(#{val})')   make this a link
