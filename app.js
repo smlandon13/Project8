@@ -30,7 +30,6 @@ app.post('/users', (req, res) => {
     userCount++;
     userArr.push(user);
     res.render('./users', {users:userArr});
-    console.log(userArr);
 });
 
 app.get('/edit/:id', (req, res) => {
@@ -41,7 +40,6 @@ app.get('/edit/:id', (req, res) => {
             res.render('edit', {user: userInfo});
         }
     }
-    console.log(userArr);
 });
 
 app.post('/edit', (req, res) => {
@@ -58,7 +56,6 @@ app.post('/edit', (req, res) => {
         }
     }
     res.render('users', {users:userArr});
-    console.log(userArr);
 });
 
 app.get('/delete/:id', (req, res) => {
@@ -69,7 +66,6 @@ app.get('/delete/:id', (req, res) => {
         }
     }
     res.render('users', {users:userArr});
-    console.log(userArr);
 });
 // delete button is the same loop and then splice arr@i, 1 then render users
 
