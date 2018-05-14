@@ -30,6 +30,7 @@ app.post('/users', (req, res) => {
     userCount++;
     userArr.push(user);
     res.render('./users', {users:userArr});
+    console.log(userArr);
 });
 
 app.get('/edit/:id', (req, res) => {
@@ -37,9 +38,10 @@ app.get('/edit/:id', (req, res) => {
     for(let i = 0; i < userArr.length; i++){
         if(+req.params.id === userArr[i].id){
             userInfo = userArr[i];
-            res.render('./edit', {user: userInfo});
+            res.render('edit', {user: userInfo});
         }
     }
+    console.log(userArr);
 });
 
 app.post('/edit', (req, res) => {
@@ -48,7 +50,7 @@ app.post('/edit', (req, res) => {
         name: req.body.name,
         email: req.body.email,
         age: req.body.age,
-        id: req.body.id
+        id: +req.body.id
     };
     for(let i = 0; i < userArr.length; i++){
         if(+req.body.id === userArr[i].id){
@@ -56,6 +58,7 @@ app.post('/edit', (req, res) => {
         }
     }
     res.render('users', {users:userArr});
+    console.log(userArr);
 });
 
 app.get('/delete/:id', (req, res) => {
@@ -66,10 +69,9 @@ app.get('/delete/:id', (req, res) => {
         }
     }
     res.render('users', {users:userArr});
+    console.log(userArr);
 });
-// delete button is the same loop and then splice arr@i, 1 then render index
-// take to a new page saying user deleted and then a button to return to the user list
-
+// delete button is the same loop and then splice arr@i, 1 then render users
 
 
 app.listen(3000, () => {
